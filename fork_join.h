@@ -1,8 +1,7 @@
 #pragma once
 
-#include <future>
-
-class RecursiveAction {
+class RecursiveAction 
+{
 public:
 	virtual ~RecursiveAction() = default;
 	virtual void compute() = 0;
@@ -12,3 +11,7 @@ public:
 protected:
 	static void invoke_all(RecursiveAction& first, RecursiveAction& second);
 };
+
+bool configure_fork_join_worker_count(unsigned int worker_count);
+
+unsigned int fork_join_worker_count();
