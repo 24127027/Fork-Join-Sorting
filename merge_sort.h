@@ -9,28 +9,29 @@
 
 namespace merge_sort_detail {
 template <typename T, typename Compare>
-void insertion_sort_range(std::vector<T>& arr, 
-							int left, 
-							int right, 
+void insertion_sort_range(std::vector<T>& arr,
+							int left,
+							int right,
 							Compare comp);
 
 template <typename T, typename Compare>
-void merge_ranges(std::vector<T>& arr, 
-					int left, 
-					int mid, 
-					int right, 
+void merge_ranges(std::vector<T>& arr,
+					int left,
+					int mid,
+					int right,
 					Compare comp);
 
 template <typename T, typename Compare>
-void merge_sort_sequential_range(std::vector<T>& arr, 
-									int left, 
-									int right, 
-									int threshold, 
+void merge_sort_sequential_range(std::vector<T>& arr,
+									int left,
+									int right,
+									int threshold,
 									Compare comp);
 }
 
 template <typename T, typename Compare = std::less<T>>
-class MergeSortTask final : public RecursiveAction {
+class MergeSortTask final : public RecursiveAction 
+{
 public:
 	MergeSortTask(std::vector<T>& arr,
 					int left,
@@ -74,3 +75,5 @@ void parallel_merge_sort(std::vector<T>& arr,
 							unsigned int depth = 0, 
 							unsigned int max_depth = 0, 
 							Compare comp = Compare{});
+
+#include "merge_sort.tpp"

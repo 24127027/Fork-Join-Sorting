@@ -13,12 +13,11 @@ void insertion_sort_range(std::vector<T>& arr,
 							int left, 
 							int right, 
 							Compare comp);
-}
 
 template <typename T, typename Compare>
 int partition_range(std::vector<T>& arr,
-					int left, 
-					int right, 
+					int left,
+					int right,
 					Compare comp);
 
 template <typename T, typename Compare>
@@ -27,6 +26,7 @@ void quick_sort_sequential_range(std::vector<T>& arr,
 									int right,
 									int threshold,
 									Compare comp);
+}
 
 template <typename T, typename Compare = std::less<T>>
 class QuickSortTask final : public RecursiveAction {
@@ -47,6 +47,7 @@ public:
 					comp_(std::move(comp)) {}
 
 	void compute() override;
+
 private:
 	std::vector<T>& arr_;
 	int left_;
@@ -72,3 +73,5 @@ void parallel_quick_sort(std::vector<T>& arr,
 							unsigned int depth = 0,
 							unsigned int max_depth = 0,
 							Compare comp = Compare{});
+
+#include "quick_sort.tpp"
