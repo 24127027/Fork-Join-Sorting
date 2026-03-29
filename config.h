@@ -18,9 +18,13 @@ inline unsigned int worker_count()
 	return workers == 0 ? 4U : workers;
 }
 
-inline unsigned int max_parallel_depth() 
+inline unsigned int max_parallel_depth_for_workers(unsigned int workers) 
 {
-	const unsigned int workers = worker_count();
+	if (workers == 0) 
+	{
+		workers = 1;
+	}
+
 	unsigned int depth = 0;
 
 	while (depth < 31U && (1U << depth) < workers) 
@@ -29,5 +33,10 @@ inline unsigned int max_parallel_depth()
 	}
 
 	return depth + 1U;
+}
+
+inline unsigned int max_parallel_depth() 
+{
+	return max_parallel_depth_for_workers(worker_count());
 }
 }
